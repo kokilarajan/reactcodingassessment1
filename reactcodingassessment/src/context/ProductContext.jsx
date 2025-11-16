@@ -7,7 +7,6 @@ const ProductContext=createContext();
 
 export function ProductProvider({children}){
     const [state,dispatch]=useReducer(productReducer,initialState)
-    console.log(productReducer,initialState,"productReducer")
 
     useEffect(()=>{
         fetchProductData();
@@ -17,7 +16,6 @@ export function ProductProvider({children}){
     //fetch product data from api
     const fetchProductData=async()=>{
         const data=await api.getProductData()
-        console.log(data,"data")
         dispatch({type:"SET_PRODUCT_DATA",payload:data})
     }
     //add product data to api
